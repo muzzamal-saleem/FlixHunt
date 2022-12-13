@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Use APIs from RapidAPI Hub</title>
+	</head>
+	<body>
+        <form action="/action_page.php">
+            <p>Please select your media type preference:</p>
+            <input type="radio" id="tv show" name="fav_type" value="tv show">
+            <label for="tv show">tv show</label><br>
+            <input type="radio" id="movie" name="fav_type" value="movie">
+            <label for="tv show">movie</label><br>
+            
+          
+            <br>  
+          
+            <p>Please type in the name of your tv show or movie:</p>
+            Title <input type="text" id="title" name="title" value="30">
+            <br><br><br>
+            <input type="submit" value="Submit">
+          </form>
+          
+		<script>
+			
+	const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'c037b7f743msh1a4f42ed6e2b5dep1e61edjsn3371b4ed4c1a',
+		'X-RapidAPI-Host': 'pet-name-generator.p.rapidapi.com'
+	}
+};
+
+fetch('https://pet-name-generator.p.rapidapi.com/female-pet-names?search=G', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
+
+
+
+
+        </script>
+	

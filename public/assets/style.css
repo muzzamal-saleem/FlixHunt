@@ -1,0 +1,19 @@
+h1{
+    color:blue;
+}
+body{
+    color: white;
+    /*background-image: url("/public/assets/woah.jpg");*/
+    background-size: cover;
+   
+    background-image: url("/public/assets/smooth.jpg");
+    
+}
+img{
+    width : 10rem;
+    height : 13rem;
+    padding: .75rem;
+}
+.container{
+    color:black;
+}
