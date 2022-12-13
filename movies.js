@@ -78,7 +78,7 @@ app.get("/", (request, response) => {
  });
 
  process.stdin.setEncoding("utf8");
- let portNumber =  process.argv[2];
+ let portNumber =  process.argv[2] || 3000;
  console.log(`Web server started and running at http://localhost:${portNumber}`);
  app.listen(portNumber); 
 
