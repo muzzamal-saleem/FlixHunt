@@ -35,7 +35,7 @@ app.get("/", (request, response) => {
     response.render("index");
  });
 
- app.post("/lookup", async (request, response) => {
+ app.post("/lookupWeb", async (request, response) => {
     pref = request.body.fav_type;
     title = request.body.title;  
     const options = {
