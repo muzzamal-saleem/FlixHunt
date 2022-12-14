@@ -37,7 +37,12 @@ app.get("/", (request, response) => {
     }
     response.render("index", variables);
  });
-
+ app.get("/", (request, response) => {
+    const variables = {
+        url : "https://is-this-it.onrender.com/lookup"
+    }
+    response.render("index", variables);
+ });
  app.post("/lookup", async (request, response) => {
     pref = request.body.fav_type;
     title = request.body.title;  
