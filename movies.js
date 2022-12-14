@@ -39,7 +39,7 @@ app.get("/", (request, response) => {
  });
  app.get("/", (request, response) => {
     const variables = {
-        url : "https://is-this-it.onrender.com/lookup"
+        url : "https://is-this-it.onrender.com"
     }
     response.render("index", variables);
  });
@@ -84,6 +84,49 @@ app.get("/", (request, response) => {
     }
     response.render("lookupPage", variables);
  });
+
+ app.post("/", async (request, response) => {
+    pref = request.body.fav_type;
+    title = request.body.title;  
+    const options = {
+        method: 'POST',
+        url: 'https://watch-here.p.rapidapi.com/wheretowatch',
+        params: {title: request.body.title, mediaType: request.body.fav_type},
+        headers: {
+          'content-type': 'application/json',
+          'X-RapidAPI-Key': '6939c6eb92msh07a1be5ed9ff3f8p1e5c65jsn337fccb1baf9',
+          'X-RapidAPI-Host': 'watch-here.p.rapidapi.com'
+        },
+        data: {"mediaType":request.body.fav_type,"title":request.body.title}
+      };
+      
+      axios.request(options).then(function (response) {
+        sites = "";
+        urls = "";
+        for (let i = 0; i < response.data.length; i++){
+            length = response.data.length;
+            sites += response.data[i].Watch + ", ";
+            urls += response.data[i].WatchUrl + ", ";
+           
+        }
+        myTitleContents = {
+            Query : title,
+            Watch : sites,
+            WatchURL : urls
+        }
+      }).catch(function (error) {
+          console.error(error);
+      });
+    await officalInsert(); 
+    await officalTitleLookup()
+    const variables = {
+        pref : request.body.fav_type,
+        title : request.body.title,
+        message: myTable
+    }
+    response.render("lookupPage", variables);
+ });
+
 
  process.stdin.setEncoding("utf8");
  let portNumber =  process.argv[2] || 3000;
