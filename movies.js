@@ -31,19 +31,19 @@ app.set("view engine", "ejs");
 /* Initializes request.body with post information */ 
 app.use(bodyParser.urlencoded({extended:false}));
 
-/*app.get("/", (request, response) => {
+app.get("/default", (request, response) => {
     const variables = {
-        url : `http://localhost:${portNumber}/lookup` 
+        url : `http://localhost:${portNumber}/default/lookup` 
     }
     response.render("index", variables);
- }); */
+ }); 
  app.get("/", (request, response) => {
     const variables = {
         url : "https://is-this-it.onrender.com"
     }
     response.render("index", variables);
  });
- /*app.post("/lookup", async (request, response) => {
+ app.post("/default/lookup", async (request, response) => {
     pref = request.body.fav_type;
     title = request.body.title;  
     const options = {
@@ -83,7 +83,7 @@ app.use(bodyParser.urlencoded({extended:false}));
         message: myTable
     }
     response.render("lookupPage", variables);
- }); */
+ }); 
 
  app.post("/", async (request, response) => {
     pref = request.body.fav_type;
@@ -130,7 +130,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 
  process.stdin.setEncoding("utf8");
  let portNumber =  process.argv[2] || 3000;
- console.log(`Web server started and running at http://localhost:${portNumber}`);
+ console.log(`Web server started and running at http://localhost:${portNumber}/default`);
  app.listen(portNumber); 
 
  console.log("CTRL C to shutdown the server. ")
