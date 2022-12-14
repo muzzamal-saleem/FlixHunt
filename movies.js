@@ -31,19 +31,19 @@ app.set("view engine", "ejs");
 /* Initializes request.body with post information */ 
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.get("/", (request, response) => {
+/*app.get("/", (request, response) => {
     const variables = {
         url : `http://localhost:${portNumber}/lookup` 
     }
     response.render("index", variables);
- });
+ }); */
  app.get("/", (request, response) => {
     const variables = {
         url : "https://is-this-it.onrender.com"
     }
     response.render("index", variables);
  });
- app.post("/lookup", async (request, response) => {
+ /*app.post("/lookup", async (request, response) => {
     pref = request.body.fav_type;
     title = request.body.title;  
     const options = {
@@ -83,7 +83,7 @@ app.get("/", (request, response) => {
         message: myTable
     }
     response.render("lookupPage", variables);
- });
+ }); */
 
  app.post("/", async (request, response) => {
     pref = request.body.fav_type;
