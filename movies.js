@@ -32,10 +32,13 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.get("/", (request, response) => {
-    response.render("webIndex");
+    const variables = {
+        url : `http://localhost:${portNumber}/lookup` 
+    }
+    response.render("index", variables);
  });
 
- app.post("/lookupWeb", async (request, response) => {
+ app.post("/lookup", async (request, response) => {
     pref = request.body.fav_type;
     title = request.body.title;  
     const options = {
@@ -82,7 +85,8 @@ app.get("/", (request, response) => {
  console.log(`Web server started and running at http://localhost:${portNumber}`);
  app.listen(portNumber); 
 
-const prompt = "Stop to shutdown the server: ";
+ console.log("CTRL C to shutdown the server. ")
+/* const prompt = "Stop to shutdown the server: ";
 process.stdout.write(prompt);
 process.stdin.on("readable", function () {
     let dataInput = process.stdin.read();
@@ -91,7 +95,7 @@ process.stdin.on("readable", function () {
         process.stdout.write("Shutting down the server\n");
         process.exit(0);
     }
-});
+});*/
 
 const databaseAndCollection = {db: "FINAL_PROJECT", collection:"myFavTitles"};
 /****** DO NOT MODIFY FROM THIS POINT ONE ******/
