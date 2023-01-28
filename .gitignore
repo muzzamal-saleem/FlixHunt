@@ -1,4 +1,3 @@
-.env
 credentialsDontPost
 package-lock.json
 node_modules/*
