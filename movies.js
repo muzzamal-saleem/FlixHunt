@@ -51,9 +51,9 @@ app.get("/default", (request, response) => {
         url: 'https://watch-here.p.rapidapi.com/wheretowatch',
         params: {title: request.body.title, mediaType: request.body.fav_type},
         headers: {
-          'content-type': 'application/json',
-          'X-RapidAPI-Key': '6939c6eb92msh07a1be5ed9ff3f8p1e5c65jsn337fccb1baf9',
-          'X-RapidAPI-Host': 'watch-here.p.rapidapi.com'
+            'content-type': 'application/json',
+            'X-RapidAPI-Key': '38d42248dfmsh9b50a60499536c3p1cbcf2jsnb7fc51943100',
+            'X-RapidAPI-Host': 'watch-here.p.rapidapi.com'
         },
         data: {"mediaType":request.body.fav_type,"title":request.body.title}
       };
